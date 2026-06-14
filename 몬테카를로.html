@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>몬테카를로 원주율 계산기</title>
+
+<style>
+body{
+    font-family: Arial;
+    text-align:center;
+    margin:30px;
+}
+
+canvas{
+    border:1px solid black;
+    margin-top:20px;
+}
+
+input{
+    padding:5px;
+    width:120px;
+}
+
+button{
+    padding:8px 15px;
+}
+</style>
+
+</head>
+<body>
+
+<div class="student">
+    10423 이원준B
+</div>
+
+<h1>몬테카를로 방법을 이용한 원주율 추정 프로그램</h1>
+
+<p>시행 횟수를 선택하고 실험을 진행해보세요</p>
+
+<select id="trials">
+    <option value="100">100회</option>
+    <option value="1000">1000회</option>
+    <option value="5000" selected>5000회</option>
+    <option value="10000">10000회</option>
+    <option value="50000">50000회</option>
+    <option value="100000">100000회</option>
+</select>
+
+<button onclick="simulate()">
+실험 시작
+</button>
+
+<h2 id="result"></h2>
+
+<canvas id="canvas" width="500" height="500"></canvas>
+
+<script>
+
+function simulate(){
+
+    const total =
+        parseInt(document.getElementById("trials").value);
+
+    let inside = 0;
+
+    const canvas =
+        document.getElementById("canvas");
+
+    const ctx =
+        canvas.getContext("2d");
+
+    ctx.clearRect(0,0,500,500);
+
+    for(let i=0;i<total;i++){
+
+        let x = Math.random();
+        let y = Math.random();
+
+        let px = x*500;
+        let py = 500-y*500;
+
+        if(x*x+y*y<=1){
+
+            inside++;
+
+            ctx.fillStyle="blue";
+
+        }else{
+
+            ctx.fillStyle="red";
+
+        }
+
+        ctx.fillRect(px,py,2,2);
+
+    }
+
+    let pi = 4*inside/total;
+
+    let error =
+        Math.abs(Math.PI-pi);
+
+    document.getElementById("result").innerHTML=
+        `
+        추정된 원주율 : ${pi}<br>
+        실제 원주율 : ${Math.PI}<br>
+        오차 : ${error}
+        `;
+}
+
+</script>
+
+</body>
+</html>
