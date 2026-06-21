@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PAINT - 독서 콘텐츠 | 10423 이원준B</title>
+<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth}
+body{font-family:Pretendard,sans-serif;background:#04070f;color:#fff;line-height:1.8}
+#progress{position:fixed;top:0;left:0;height:5px;background:#00d9ff;width:0%;z-index:9999}
+section{padding:80px 8%}
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;background:linear-gradient(rgba(0,0,0,.88),rgba(0,0,0,.96)),url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=80');background-size:cover}
+.hero h1{font-size:5rem;color:#00d9ff;text-shadow:0 0 25px #00d9ff}
+.hero p{max-width:900px;font-size:1.3rem;margin:20px 0}
+.btn{display:inline-block;background:#00d9ff;color:#000;padding:15px 35px;border-radius:30px;text-decoration:none;font-weight:700}
+.card{background:#0d1322;border:1px solid #17365d;border-radius:18px;padding:25px;margin:20px 0}
+h2{color:#00d9ff;margin-bottom:20px;font-size:2.2rem}
+.timeline .card{border-left:5px solid #00d9ff}
+table{width:100%;border-collapse:collapse}
+td,th{border:1px solid #00d9ff;padding:12px}
+button.option{padding:10px 15px;margin:5px;border:none;border-radius:8px;background:#1b2438;color:#fff;cursor:pointer}
+button.selected{background:#00d9ff;color:#000}
+.quote{text-align:center;font-size:2rem;color:#00d9ff;padding:40px}
+.fade{opacity:0;transform:translateY(30px);transition:1s}
+.fade.show{opacity:1;transform:none}
+footer{text-align:center;padding:60px;background:#02040a}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+
+<section class="hero">
+<h1>PAINT</h1>
+<p>국가가 부모를 연결하는 시대. 당신은 어떤 가족을 선택하시겠습니까?<br>『페인트』를 읽고 기술, 인간성, 가족의 의미를 탐구한 독서 콘텐츠</p>
+<p><strong>10423 이원준B</strong></p>
+<a href="#intro" class="btn">탐구 시작하기</a>
+</section>
+
+<section id="intro" class="fade">
+<h2>📖 작품 소개</h2>
+<div class="card">
+<p>『페인트』는 이희영 작가의 청소년 SF 소설이다. 작품 속 미래 사회에서는 부모와 자녀의 관계마저 국가가 관리한다. 아이들은 국가 기관 PAINT에서 성장하며 부모 후보를 직접 면접하고 선택한다.</p>
+<p>겉으로 보면 매우 효율적이고 합리적인 사회처럼 보인다. 그러나 작품은 독자에게 중요한 질문을 던진다. 사랑은 선택될 수 있는가? 가족은 계약처럼 결정될 수 있는가? 인간의 감정은 데이터로 분석 가능한가?</p>
+<p>나는 컴퓨터공학 진로를 희망하는 학생으로서 이 작품을 읽으며 기술 발전과 인간성의 관계를 깊게 고민하게 되었다.</p>
+</div>
+</section>
+
+<section class="fade">
+<h2>👤 제누의 이야기</h2>
+<div class="timeline">
+<div class="card"><h3>부모 없는 성장</h3><p>주인공 제누는 부모 없이 PAINT 시설에서 성장한다. 물질적으로는 부족함이 없지만 마음속에는 채워지지 않는 공허함이 존재한다.</p></div>
+<div class="card"><h3>부모 후보 면접</h3><p>제누는 여러 부모 후보를 만나며 그들의 가치관과 삶의 방식을 관찰한다. 이 과정은 단순한 선택이 아니라 가족의 의미를 찾는 여정이 된다.</p></div>
+<div class="card"><h3>고민과 성장</h3><p>작품은 인간관계를 평가와 데이터로만 판단할 수 있는지 묻는다. 제누는 사랑과 이해의 가치를 깨닫게 된다.</p></div>
+</div>
+</section>
+
+<section class="fade">
+<h2>🧠 부모 선택 시뮬레이션</h2>
+<div class="card">
+<div class="q">
+<p>가장 중요한 부모의 조건은?</p>
+<button class="option" onclick="pick(this,1)">경제력</button>
+<button class="option" onclick="pick(this,-1)">사랑</button>
+</div>
+<div class="q">
+<p>갈등은 어떻게 해결해야 할까?</p>
+<button class="option" onclick="pick(this,1)">규칙</button>
+<button class="option" onclick="pick(this,-1)">대화</button>
+</div>
+<div class="q">
+<p>좋은 가족이란?</p>
+<button class="option" onclick="pick(this,1)">조건이 맞는 가족</button>
+<button class="option" onclick="pick(this,-1)">서로 이해하는 가족</button>
+</div>
+<button class="btn" onclick="result()">결과 보기</button>
+<p id="resultBox" style="margin-top:20px"></p>
+</div>
+</section>
+
+<section class="fade">
+<h2>🤖 현실과 『페인트』</h2>
+<table>
+<tr><th>현재 사회</th><th>페인트 사회</th></tr>
+<tr><td>추천 알고리즘</td><td>부모 추천 시스템</td></tr>
+<tr><td>데이터 분석</td><td>부모 평가</td></tr>
+<tr><td>AI 의사결정</td><td>가족 선택</td></tr>
+</table>
+<div class="card">
+<p>오늘날 우리는 유튜브, 넷플릭스, 쇼핑몰 추천 시스템을 이용한다. AI는 우리의 취향을 분석하고 행동을 예측한다. 미래에는 인간관계까지 데이터화하려는 시도가 늘어날 수 있다.</p>
+<p>그러나 『페인트』는 인간의 감정과 사랑이 단순한 데이터가 아님을 보여준다. 기술은 도움을 줄 수 있지만 인간 자체를 완전히 이해할 수는 없다는 메시지를 전달한다.</p>
+</div>
+</section>
+
+<section class="fade">
+<h2>💻 컴퓨터공학 진로와의 연결</h2>
+<div class="card">
+<p>나는 컴퓨터공학 분야에 관심이 있다. 이 책을 통해 기술 발전만을 목표로 하는 것이 아니라 사람을 위한 기술을 만들어야 한다는 점을 깨달았다.</p>
+<p>효율성과 성능은 중요하지만 인간의 감정과 삶의 질 역시 중요하다. 『페인트』 속 사회는 효율적이었지만 많은 인물들이 외로움을 느끼고 있었다. 이를 통해 기술과 윤리가 함께 발전해야 한다는 사실을 알게 되었다.</p>
+<p>앞으로 나는 사람을 이해하는 개발자가 되고 싶다. 인간다움을 지키면서 사회에 도움이 되는 기술을 만드는 것이 나의 목표이다.</p>
+</div>
+</section>
+
+<section class="fade">
+<h2>🌟 내가 얻은 메시지</h2>
+<div class="card">
+<p>가족은 평가로 만들어지는 관계가 아니라 서로를 이해하려는 노력으로 만들어지는 관계라고 생각한다. 완벽한 사람은 없지만 부족함을 받아들이는 과정 속에서 진정한 관계가 형성된다.</p>
+<p>『페인트』는 단순한 성장 소설이 아니라 미래 사회와 인간성에 대한 질문을 던지는 작품이었다. 기술이 발전할수록 오히려 인간다움의 가치가 더욱 중요해질 것이라는 점이 가장 인상 깊었다.</p>
+</div>
+<div class="quote">“가족은 선택으로 만들어지는가, 이해로 만들어지는가?”</div>
+</section>
+
+<footer>
+<h3>PAINT 독서 콘텐츠</h3>
+<p>이희영 작가의 『페인트』를 읽고 제작한 독서 탐구 웹사이트</p>
+<p>10423 이원준B</p>
+</footer>
+
+<script>
+let score=0;
+function pick(btn,val){
+ const parent=btn.parentElement;
+ parent.querySelectorAll('.option').forEach(b=>b.classList.remove('selected'));
+ btn.classList.add('selected');
+ parent.dataset.value=val;
+}
+function result(){
+ score=0;
+ document.querySelectorAll('.q').forEach(q=>{score+=Number(q.dataset.value||0)});
+ document.getElementById('resultBox').innerHTML=score>=0?
+ "📊 당신은 효율성과 체계를 중요하게 생각하는 경향이 있습니다.":
+ "❤️ 당신은 공감과 인간관계를 더 중요하게 생각하는 경향이 있습니다.";
+}
+window.addEventListener('scroll',()=>{
+ let h=document.documentElement.scrollHeight-window.innerHeight;
+ document.getElementById('progress').style.width=(window.scrollY/h*100)+'%';
+});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')}));
+document.querySelectorAll('.fade').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
